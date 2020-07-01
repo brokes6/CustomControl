@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MenuItemLayout">
+        <attr name="TitleText" format="string" />
+        <attr name="PromptText" format="string" />
+        <attr name="TitleImg" format="reference" />
+        <attr name="icon_uri" format="string" />
+        <attr name="isSwitch" format="boolean" />
+        <attr name="divide_line_style" format="integer" />
+    </declare-styleable>
+</resources>
