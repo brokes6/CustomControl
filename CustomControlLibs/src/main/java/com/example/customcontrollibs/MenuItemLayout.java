@@ -115,6 +115,7 @@ public class MenuItemLayout extends FrameLayout {
         setHint_text(a.getString(R.styleable.MenuItemLayout_PromptText));
         setIconImgId(a.getResourceId(R.styleable.MenuItemLayout_TitleImg, 10000));
         isSwitchmore(a.getBoolean(R.styleable.MenuItemLayout_isSwitch, false));
+        a.recycle();
     }
 
     public void setViewOnlickListener(OnClickListener onlickListener) {
