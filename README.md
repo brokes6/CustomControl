@@ -14,5 +14,5 @@ allprojects {
 ```
 Step 2. Add the dependency<br>
 ```Java
-implementation 'com.github.brokes6:CustomControl:v1.0.1'
+implementation 'com.github.brokes6:CustomControl:v1.0.2'
 ```
