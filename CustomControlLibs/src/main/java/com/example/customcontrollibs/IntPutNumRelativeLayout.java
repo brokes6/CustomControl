@@ -74,7 +74,7 @@ public class IntPutNumRelativeLayout extends RelativeLayout {
             public void onClick(View view) {
                 Mplus_num.setEnabled(true);
                 MCurrentNum -= mStep;
-                if (MCurrentNum <= mMin) {
+                if (mMin != 0 && MCurrentNum <= mMin) {
                     view.setEnabled(false);
                     MCurrentNum = mMin;
                 }
@@ -86,7 +86,7 @@ public class IntPutNumRelativeLayout extends RelativeLayout {
             public void onClick(View view) {
                 Mreduce_num.setEnabled(true);
                 MCurrentNum += mStep;
-                if (MCurrentNum >= mMax) {
+                if (mMax != 0 && MCurrentNum >= mMax) {
                     view.setEnabled(false);
                     MCurrentNum = mMax;
                 }

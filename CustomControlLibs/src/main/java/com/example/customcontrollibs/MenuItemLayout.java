@@ -33,7 +33,6 @@ public class MenuItemLayout extends FrameLayout {
     public static final int DIVIDE_AREA = 2;
     public int divideLineStyle = NO_LINE;
     private boolean isShowRedHintImg = false;
-
     public int getIconImgId() {
         return textImgId;
     }
@@ -82,8 +81,11 @@ public class MenuItemLayout extends FrameLayout {
         linearLayout.setBackground(background);
     }
 
-    public void setLinBackgroundColor(String color) {
-        linearLayout.setBackgroundColor(Color.parseColor(color));
+    public void setLinBackground(int reference) {
+        if (reference == -1){
+            return;
+        }
+        linearLayout.setBackgroundResource(reference);
     }
 
     public MenuItemLayout(@NonNull Context context) {
@@ -115,6 +117,7 @@ public class MenuItemLayout extends FrameLayout {
         setHint_text(a.getString(R.styleable.MenuItemLayout_PromptText));
         setIconImgId(a.getResourceId(R.styleable.MenuItemLayout_TitleImg, 10000));
         isSwitchmore(a.getBoolean(R.styleable.MenuItemLayout_isSwitch, false));
+        setLinBackground(a.getResourceId(R.styleable.MenuItemLayout_Background,-1));
         a.recycle();
     }
 

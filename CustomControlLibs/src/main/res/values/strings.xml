@@ -3,4 +3,11 @@
 
     <string name="colorBlue">#2196f3</string>
     <string name="red">#E91E63</string>
+    <string name="text_read">已读</string>
+    <string name="text_delete">删除</string>
+    <string name="text_top">置顶</string>
+    <string name="title_text">标题文字</string>
+    <string name="hint_text">提示文字</string>
+    <string name="reduce_text">-</string>
+    <string name="plus_text">+</string>
 </resources>

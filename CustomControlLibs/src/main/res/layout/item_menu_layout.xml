@@ -25,16 +25,17 @@
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="标题文字"
+            android:text="@string/title_text"
             android:textColor="#393737"
-            android:textSize="19sp" />
+            android:textSize="19sp"
+            android:layout_marginStart="5dp" />
 
         <TextView
             android:id="@+id/text_hint"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="提示文字"
+            android:text="@string/hint_text"
             android:textColor="#8E8A8A"
             android:textSize="16sp" />
 
@@ -49,7 +50,8 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/more_24"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:contentDescription="TODO" />
     </LinearLayout>
 
     <TextView

@@ -4,6 +4,7 @@
         <attr name="TitleText" format="string" />
         <attr name="PromptText" format="string" />
         <attr name="TitleImg" format="reference" />
+        <attr name="Background" format="reference"/>
         <attr name="isSwitch" format="boolean" />
     </declare-styleable>
 
@@ -13,5 +14,13 @@
         <attr name="step" format="integer"/>
         <attr name="disable" format="boolean"/>
         <attr name="BgColoer" format="reference"/>
+    </declare-styleable>
+    
+    <declare-styleable name="SildeMenuView">
+        <attr name="function" format="float">
+            <flag name="delete" value="0x30"/>
+            <flag name="read" value="0x50"/>
+            <flag name="top" value="0x03"/>
+        </attr>
     </declare-styleable>
 </resources>

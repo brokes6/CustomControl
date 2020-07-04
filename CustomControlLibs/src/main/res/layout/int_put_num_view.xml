@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/selector_intput_num_left"
         android:gravity="center"
-        android:text="-"
+        android:text="@string/reduce_text"
         android:textSize="30sp" />
 
     <EditText
@@ -29,6 +29,6 @@
         android:layout_height="match_parent"
         android:background="@drawable/selector_intput_num_right"
         android:gravity="center"
-        android:text="+"
+        android:text="@string/plus_text"
         android:textSize="18sp" />
 </LinearLayout>
