@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class TopTextView extends LinearLayout {
@@ -28,10 +29,11 @@ public class TopTextView extends LinearLayout {
 
     public TopTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(attrs);
+        init(context,attrs);
     }
 
-    private void init(@Nullable AttributeSet attrs) {
+    private void init(@NonNull Context context, @Nullable AttributeSet attrs) {
+        mContext = context;
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.top_text_view, this, true);
         Top_Text = view.findViewById(R.id.Text_num);
