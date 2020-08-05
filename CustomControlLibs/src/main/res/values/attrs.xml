@@ -4,23 +4,42 @@
         <attr name="TitleText" format="string" />
         <attr name="PromptText" format="string" />
         <attr name="TitleImg" format="reference" />
-        <attr name="Background" format="reference"/>
+        <attr name="Background" format="reference" />
         <attr name="isSwitch" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="IntPutNumRelativeLayout">
-        <attr name="max" format="integer"/>
-        <attr name="min" format="integer"/>
-        <attr name="step" format="integer"/>
-        <attr name="disable" format="boolean"/>
-        <attr name="BgColoer" format="reference"/>
+        <attr name="max" format="integer" />
+        <attr name="min" format="integer" />
+        <attr name="step" format="integer" />
+        <attr name="disable" format="boolean" />
+        <attr name="BgColoer" format="reference" />
     </declare-styleable>
-    
+
     <declare-styleable name="SildeMenuView">
         <attr name="function" format="float">
-            <flag name="delete" value="0x30"/>
-            <flag name="read" value="0x50"/>
-            <flag name="top" value="0x03"/>
+            <flag name="delete" value="0x30" />
+            <flag name="read" value="0x50" />
+            <flag name="top" value="0x03" />
         </attr>
+    </declare-styleable>
+
+    <declare-styleable name="WatchFace">
+        <attr name="secondHandColor" format="color" />
+        <attr name="minuteHandColor" format="color" />
+        <attr name="hourHandColor" format="color" />
+        <attr name="scaleColor" format="color" />
+        <attr name="faceBackground" format="color" />
+        <attr name="scaleShow" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="TopTextView">
+        <attr name="Top_Text" format="string" />
+        <attr name="Bottom_Text" format="string" />
+        <attr name="Text_Spacing" format="integer" />
+        <attr name="Top_Text_Color" format="color" />
+        <attr name="Bottom_Text_Color" format="color" />
+        <attr name="Top_Text_Size" format="dimension" />
+        <attr name="Bottom_Text_Size" format="dimension" />
     </declare-styleable>
 </resources>

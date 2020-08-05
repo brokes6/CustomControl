@@ -3,7 +3,6 @@ package com.example.customcontrollibs;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Scroller;
 import android.widget.TextView;
 
-import static android.content.ContentValues.TAG;
 import static android.view.MotionEvent.ACTION_DOWN;
 import static android.view.MotionEvent.ACTION_MOVE;
 import static android.view.MotionEvent.ACTION_UP;
@@ -107,6 +105,12 @@ public class SildeMenuView extends ViewGroup implements View.OnClickListener {
 
     }
 
+    /**
+     * 拦截点击事件，如果在滑动就拦，给自己消费
+     *
+     * @param ev
+     * @return
+     */
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         switch (ev.getAction()) {
@@ -141,13 +145,12 @@ public class SildeMenuView extends ViewGroup implements View.OnClickListener {
                 float MoveX = event.getX();
                 float MoveY = event.getY();
                 int dx = (int) (MoveX - mDownx);
-                if (dx > 0) {
+                if (dx > 0) {//但是dx向左移动为整数，向右移动为负数，所以相反（与滑动方向相反）
                     mCurrentDirect = Direction.RIGHT;
                 } else {
                     mCurrentDirect = Direction.LEFT;
                 }
                 //判断边界值（向左移动是负数，向右移动为整数）
-                //但是dx向左移动为整数，向右移动为负数，所以相反
                 //判断向左是否超过0
                 if ((-dx + scrollX) <= 0) {
                     scrollTo(0, 0);
@@ -224,10 +227,12 @@ public class SildeMenuView extends ViewGroup implements View.OnClickListener {
 
     /**
      * 所有的插值都会传到这边
+     * 插值就是指：假设100的距离被平均分为（10，20，30，40...）传递过来
      */
     @Override
     public void computeScroll() {
         if (mScroller.computeScrollOffset()) {
+            //更具插值来移动屏幕
             scrollTo(mScroller.getCurrX(), 0);
             invalidate();
         }
@@ -306,7 +311,12 @@ public class SildeMenuView extends ViewGroup implements View.OnClickListener {
         this.mDirection = value;
     }
 
-    public void setEditView(View v){
+    /**
+     * 设置EditView的布局
+     *
+     * @param v
+     */
+    public void setEditView(View v) {
         mEditView = v;
         initEditView();
         this.addView(mEditView);

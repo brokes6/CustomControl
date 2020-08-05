@@ -2,7 +2,6 @@ package com.example.customcontrollibs;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -33,6 +32,7 @@ public class MenuItemLayout extends FrameLayout {
     public static final int DIVIDE_AREA = 2;
     public int divideLineStyle = NO_LINE;
     private boolean isShowRedHintImg = false;
+
     public int getIconImgId() {
         return textImgId;
     }
@@ -82,7 +82,7 @@ public class MenuItemLayout extends FrameLayout {
     }
 
     public void setLinBackground(int reference) {
-        if (reference == -1){
+        if (reference == -1) {
             return;
         }
         linearLayout.setBackgroundResource(reference);
@@ -117,7 +117,7 @@ public class MenuItemLayout extends FrameLayout {
         setHint_text(a.getString(R.styleable.MenuItemLayout_PromptText));
         setIconImgId(a.getResourceId(R.styleable.MenuItemLayout_TitleImg, 10000));
         isSwitchmore(a.getBoolean(R.styleable.MenuItemLayout_isSwitch, false));
-        setLinBackground(a.getResourceId(R.styleable.MenuItemLayout_Background,-1));
+        setLinBackground(a.getResourceId(R.styleable.MenuItemLayout_Background, -1));
         a.recycle();
     }
 

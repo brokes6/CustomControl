@@ -3,4 +3,13 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    
+    <color name="secondColor">#CA0B0B</color>
+    <color name="minColor">#ffffff</color>
+    <color name="hourColor">#03A9F4</color>
+    <color name="scaleColor">#ffffff</color>
+    <color name="While">#ffffff</color>
+    <color name="grey">#454444</color>
+    <color name="Black">#000000</color>
+    <color name="Grey_9">#999999</color>
 </resources>
