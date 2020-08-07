@@ -42,4 +42,12 @@
         <attr name="Top_Text_Size" format="dimension" />
         <attr name="Bottom_Text_Size" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="ImageTopView">
+        <attr name="Image_Text_Spacing" format="integer"/>
+        <attr name="Text_Size" format="dimension"/>
+        <attr name="Image_Text" format="string"/>
+        <attr name="Src" format="reference|color"/>
+        <attr name="Image_Size" format="integer"/>
+    </declare-styleable>
 </resources>
