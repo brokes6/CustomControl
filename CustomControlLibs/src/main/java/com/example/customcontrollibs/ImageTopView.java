@@ -50,7 +50,7 @@ public class ImageTopView extends LinearLayout {
         setDrawable(array.getDrawable(R.styleable.ImageTopView_Image_Drawable));
         setText(array.getString(R.styleable.ImageTopView_Image_Text));
         setTextSpacing(array.getInt(R.styleable.ImageTopView_Image_Text_Spacing, 0));
-        setTextSize(array.getInt(R.styleable.ImageTopView_Text_Size, 16));
+        setTextSize(array.getInt(R.styleable.ImageTopView_Text_Size, 12));
         setImageSize(array.getInt(R.styleable.ImageTopView_Image_Size, 30));
         setTextColor(array.getInt(R.styleable.ImageTopView_Text_Color,-1));
         array.recycle();

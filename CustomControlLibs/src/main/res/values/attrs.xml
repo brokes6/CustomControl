@@ -45,7 +45,7 @@
 
     <declare-styleable name="ImageTopView">
         <attr name="Image_Text_Spacing" format="integer"/>
-        <attr name="Text_Size" format="dimension"/>
+        <attr name="Text_Size" format="integer"/>
         <attr name="Image_Text" format="string"/>
         <attr name="Image_Drawable" format="reference"/>
         <attr name="Image_Size" format="integer"/>
