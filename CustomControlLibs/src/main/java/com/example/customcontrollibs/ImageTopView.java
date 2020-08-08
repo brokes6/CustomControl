@@ -19,7 +19,6 @@ public class ImageTopView extends LinearLayout {
     private View view;
     private TextView text;
     private ImageView img;
-//    private LinearLayout main;
     private int mSpacing;
     private String mText;
 
@@ -40,7 +39,6 @@ public class ImageTopView extends LinearLayout {
         mContext = context;
         LayoutInflater la = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = la.inflate(R.layout.image_top_view, this, true);
-//        main= view.findViewById(R.id.main);
         text = view.findViewById(R.id.I_text);
         img = view.findViewById(R.id.I_image);
 
@@ -49,13 +47,13 @@ public class ImageTopView extends LinearLayout {
 //        if (d != null) {
 //            setImageDrawable(d);
 //        }
-        setDrawable(array.getDrawable(R.styleable.ImageTopView_Drawable));
+        setDrawable(array.getDrawable(R.styleable.ImageTopView_Image_Drawable));
         setText(array.getString(R.styleable.ImageTopView_Image_Text));
         setTextSpacing(array.getInt(R.styleable.ImageTopView_Image_Text_Spacing, 0));
         setTextSize(array.getInt(R.styleable.ImageTopView_Text_Size, 16));
         setImageSize(array.getInt(R.styleable.ImageTopView_Image_Size, 30));
         setTextColor(array.getInt(R.styleable.ImageTopView_Text_Color,-1));
-//        setAlpha(array.getFloat(R.styleable.ImageTopView_Alpha,1f));
+        array.recycle();
     }
 
     public void setTextSpacing(int spacing) {
@@ -66,7 +64,7 @@ public class ImageTopView extends LinearLayout {
     }
 
     public void setImageSize(int value) {
-        int px = DensityUtil.px2dip(mContext, value);
+        int px = DensityUtil.dip2px(mContext, value);
         //将用户输入的数据转换为dp
         LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) img.getLayoutParams();
         //取控件imageView当前的布局参数 linearParams.height/width = value;// 控件的高强制设成用户设置的
@@ -104,9 +102,5 @@ public class ImageTopView extends LinearLayout {
 
     public void setTextColor(int color){
         text.setTextColor(color);
-    }
-
-    public void setAlpha(float value){
-        //暂无
     }
 }
