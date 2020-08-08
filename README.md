@@ -81,16 +81,17 @@ implementation 'com.github.brokes6:CustomControl:v1.0.2'
  	<attr name="Image_Text_Spacing" format="integer"/>
         <attr name="Text_Size" format="dimension"/>
         <attr name="Image_Text" format="string"/>
-        <attr name="Src" format="reference|color"/>
+        <attr name="Drawable" format="reference|color"/>
         <attr name="Image_Size" format="integer"/>
+        <attr name="Text_Color" format="reference|color"/>
 ```
 ## 使用如下:<br>
 ```Java
- <com.example.customcontrollibs.ImageTopView
+<com.example.customcontrollibs.ImageTopView
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginTop="20dp"
-            app:Src="@mipmap/offline_caching"
+            app:Drawable="@mipmap/offline_caching"
             app:Image_Text="更多"
-            app:Text_Spacing="20" />
+            app:Image_Text_Spacing="20"
+            app:Text_Color="#F10000"/>
 ```
