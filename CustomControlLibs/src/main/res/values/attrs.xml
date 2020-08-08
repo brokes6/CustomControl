@@ -47,7 +47,9 @@
         <attr name="Image_Text_Spacing" format="integer"/>
         <attr name="Text_Size" format="dimension"/>
         <attr name="Image_Text" format="string"/>
-        <attr name="Src" format="reference|color"/>
+        <attr name="Drawable" format="reference|color"/>
         <attr name="Image_Size" format="integer"/>
+        <attr name="Text_Color" format="reference|color"/>
+        <attr name="Alpha" format="float"/>
     </declare-styleable>
 </resources>

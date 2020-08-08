@@ -12,13 +12,16 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
+
 public class ImageTopView extends LinearLayout {
     private Context mContext;
     private View view;
     private TextView text;
     private ImageView img;
+//    private LinearLayout main;
     private int mSpacing;
-    private String mTopText;
+    private String mText;
 
     public ImageTopView(Context context) {
         this(context, null);
@@ -37,31 +40,36 @@ public class ImageTopView extends LinearLayout {
         mContext = context;
         LayoutInflater la = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = la.inflate(R.layout.image_top_view, this, true);
+//        main= view.findViewById(R.id.main);
         text = view.findViewById(R.id.I_text);
         img = view.findViewById(R.id.I_image);
 
         TypedArray array = mContext.obtainStyledAttributes(attrs, R.styleable.ImageTopView);
-        final Drawable d = array.getDrawable(R.styleable.ImageTopView_Src);
-        if (d != null) {
-            setImageDrawable(d);
-        }
+//        final Drawable d = array.getDrawable(R.styleable.ImageTopView_Src);
+//        if (d != null) {
+//            setImageDrawable(d);
+//        }
+        setDrawable(array.getDrawable(R.styleable.ImageTopView_Drawable));
         setText(array.getString(R.styleable.ImageTopView_Image_Text));
-        setTextSpacing(array.getInt(R.styleable.ImageTopView_Image_Text_Spacing,0));
-        setTextSize(array.getInt(R.styleable.ImageTopView_Text_Size,16));
-        setImageSize(array.getInt(R.styleable.ImageTopView_Image_Size,30));
+        setTextSpacing(array.getInt(R.styleable.ImageTopView_Image_Text_Spacing, 0));
+        setTextSize(array.getInt(R.styleable.ImageTopView_Text_Size, 16));
+        setImageSize(array.getInt(R.styleable.ImageTopView_Image_Size, 30));
+        setTextColor(array.getInt(R.styleable.ImageTopView_Text_Color,-1));
+//        setAlpha(array.getFloat(R.styleable.ImageTopView_Alpha,1f));
     }
 
-    public void setTextSpacing(int spacing){
+    public void setTextSpacing(int spacing) {
         mSpacing = spacing;
         LinearLayout.LayoutParams lp = (LayoutParams) text.getLayoutParams();
-        lp.setMargins(0,spacing,0,0);
+        lp.setMargins(0, spacing, 0, 0);
         text.setLayoutParams(lp);
     }
 
-    public void setImageSize(int value){
-        int px = DensityUtil.dip2px(mContext,value);
-        LinearLayout.LayoutParams linearParams =(LinearLayout.LayoutParams) img.getLayoutParams();
-        //取控件textView当前的布局参数 linearParams.height = 20;// 控件的高强制设成20
+    public void setImageSize(int value) {
+        int px = DensityUtil.px2dip(mContext, value);
+        //将用户输入的数据转换为dp
+        LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) img.getLayoutParams();
+        //取控件imageView当前的布局参数 linearParams.height/width = value;// 控件的高强制设成用户设置的
         linearParams.width = px;
         linearParams.height = px;
         // 控件的宽强制设成30
@@ -69,16 +77,36 @@ public class ImageTopView extends LinearLayout {
         //使设置好的布局参数应用到控件
     }
 
-    public void setText(String topText){
-        this.mTopText = topText;
-        text.setText(topText);
+    public void setText(String value) {
+        this.mText = value;
+        text.setText(mText);
     }
 
-    public void setTextSize(int value){
+    public void setTextSize(int value) {
         text.setTextSize(value);
     }
 
-    private void setImageDrawable(Drawable drawable){
+    public void setDrawable(Drawable d) {
+        if (d != null) {
+            setImageDrawable(d);
+        }
+    }
+
+    public void setUrl(String url) {
+        if (url == null) {
+            Glide.with(mContext).load(url).into(img);
+        }
+    }
+
+    private void setImageDrawable(Drawable drawable) {
         img.setImageDrawable(drawable);
+    }
+
+    public void setTextColor(int color){
+        text.setTextColor(color);
+    }
+
+    public void setAlpha(float value){
+        //暂无
     }
 }
