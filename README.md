@@ -84,14 +84,41 @@ implementation 'com.github.brokes6:CustomControl:v1.0.2'
         <attr name="Drawable" format="reference|color"/>
         <attr name="Image_Size" format="integer"/>
         <attr name="Text_Color" format="reference|color"/>
+	<attr name="Is_radius" format="boolean"/>
 ```
 ## 使用如下:<br>
 ```Java
 <com.example.customcontrollibs.ImageTopView
             android:layout_width="80dp"
             android:layout_height="80dp"
-            app:Drawable="@mipmap/offline_caching"
+	    app:Drawable="@mipmap/offline_caching"
             app:Image_Text="更多"
             app:Image_Text_Spacing="20"
-            app:Text_Color="#F10000"/>
+            app:Text_Color="#F10000" />
+```
+# CustomChannelView:<br>
+## 效果如下:<br>
+![image](https://github.com/brokes6/CustomControl/blob/master/CustomControlLibs/src/showresources/image6.jpg)<br>
+## 属性如下:<br>
+```Java
+ 	<attr name="Ch_TopUrl" format="string"/>
+        <attr name="Ch_Bottom_Text" format="string"/>
+        <attr name="Ch_Bottom_Time" format="string"/>
+        <attr name="Ch_middle_Url" format="string"/>
+        <attr name="Ch_ImageRadius" format="integer"/>
+```
+## 使用如下:<br>
+```Java
+<com.example.customcontrollibs.CustomChannelView
+            android:layout_width="140dp"
+            android:layout_height="200dp"
+            app:Ch_Bottom_Text="起飞~"
+            app:Ch_Bottom_Time="08-10浏览"
+            android:elevation="6dp"/>
+	    
+	 //在activity/fragment中设置url
+	item_two = findViewById(R.id.item_two);
+        item_two.setTopUrl("https://i0.hdslb.com/bfs/archive/c1e48e6aaf5e2eb430de9e9c635cb626103c0bef.jpg@412w_232h_1c_100q.jpg");
+	//若没有设置TopUrl，则会默认设置一个纯色背景
+        item_two.setMiddleUrl("https://i1.hdslb.com/bfs/face/acc7a0e97bf9f6c4d047777e40270a39bc7f4f7d.jpg");
 ```
