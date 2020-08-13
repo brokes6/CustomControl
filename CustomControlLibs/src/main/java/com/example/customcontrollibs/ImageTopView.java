@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ImageTopView extends LinearLayout {
     private Context mContext;
     private View view;
@@ -21,6 +23,8 @@ public class ImageTopView extends LinearLayout {
     private ImageView img;
     private int mSpacing;
     private String mText;
+    private CircleImageView radius_img;
+    private boolean mIsRadius;
 
     public ImageTopView(Context context) {
         this(context, null);
@@ -41,12 +45,14 @@ public class ImageTopView extends LinearLayout {
         view = la.inflate(R.layout.image_top_view, this, true);
         text = view.findViewById(R.id.I_text);
         img = view.findViewById(R.id.I_image);
+        radius_img = view.findViewById(R.id.I_image_radius);
 
         TypedArray array = mContext.obtainStyledAttributes(attrs, R.styleable.ImageTopView);
 //        final Drawable d = array.getDrawable(R.styleable.ImageTopView_Src);
 //        if (d != null) {
 //            setImageDrawable(d);
 //        }
+        isRadius(array.getBoolean(R.styleable.ImageTopView_Is_radius,false));
         setDrawable(array.getDrawable(R.styleable.ImageTopView_Image_Drawable));
         setText(array.getString(R.styleable.ImageTopView_Image_Text));
         setTextSpacing(array.getInt(R.styleable.ImageTopView_Image_Text_Spacing, 0));
@@ -65,14 +71,25 @@ public class ImageTopView extends LinearLayout {
 
     public void setImageSize(int value) {
         int px = DensityUtil.dip2px(mContext, value);
-        //将用户输入的数据转换为dp
-        LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) img.getLayoutParams();
-        //取控件imageView当前的布局参数 linearParams.height/width = value;// 控件的高强制设成用户设置的
-        linearParams.width = px;
-        linearParams.height = px;
-        // 控件的宽强制设成30
-        img.setLayoutParams(linearParams);
-        //使设置好的布局参数应用到控件
+        if (!mIsRadius){
+            //将用户输入的数据转换为dp
+            LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) img.getLayoutParams();
+            //取控件imageView当前的布局参数 linearParams.height/width = value;// 控件的高强制设成用户设置的
+            linearParams.width = px;
+            linearParams.height = px;
+            // 控件的宽强制设成30
+            img.setLayoutParams(linearParams);
+            //使设置好的布局参数应用到控件
+        }else{
+            //将用户输入的数据转换为dp
+            LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) radius_img.getLayoutParams();
+            //取控件imageView当前的布局参数 linearParams.height/width = value;// 控件的高强制设成用户设置的
+            linearParams.width = px;
+            linearParams.height = px;
+            // 控件的宽强制设成30
+            radius_img.setLayoutParams(linearParams);
+            //使设置好的布局参数应用到控件
+        }
     }
 
     public void setText(String value) {
@@ -91,16 +108,35 @@ public class ImageTopView extends LinearLayout {
     }
 
     public void setUrl(String url) {
-        if (url == null) {
-            Glide.with(mContext).load(url).into(img);
+        if (url != null) {
+            if (!mIsRadius){
+                Glide.with(mContext).load(url).into(img);
+            }else{
+                Glide.with(mContext).load(url).into(radius_img);
+            }
         }
     }
 
     private void setImageDrawable(Drawable drawable) {
-        img.setImageDrawable(drawable);
+        if (!mIsRadius){
+            img.setImageDrawable(drawable);
+        }else{
+            radius_img.setImageDrawable(drawable);
+        }
     }
 
     public void setTextColor(int color){
         text.setTextColor(color);
+    }
+
+    public void isRadius(boolean value){
+        mIsRadius = value;
+        if (mIsRadius){
+            radius_img.setVisibility(View.VISIBLE);
+            img.setVisibility(View.GONE);
+        }else{
+            radius_img.setVisibility(View.GONE);
+            img.setVisibility(View.VISIBLE);
+        }
     }
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.gcssloop.widget.RCRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/CC_Image"
+    android:layout_width="160dp"
+    android:layout_height="190dp">
+
+    <ImageView
+        android:id="@+id/CC_topImage"
+        android:layout_width="160dp"
+        android:layout_height="66dp"
+        android:scaleType="fitXY"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/CC_topImage"
+        android:background="@color/While"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/CC_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="是在下输了"
+            android:textColor="@color/Black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/CC_Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="08-10浏览"
+            android:textColor="@color/Grey_9"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/CC_middleImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/While"/>
+
+</com.gcssloop.widget.RCRelativeLayout>

@@ -50,5 +50,14 @@
         <attr name="Image_Drawable" format="reference"/>
         <attr name="Image_Size" format="integer"/>
         <attr name="Text_Color" format="reference|color"/>
+        <attr name="Is_radius" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomChannelView">
+        <attr name="Ch_TopUrl" format="string"/>
+        <attr name="Ch_Bottom_Text" format="string"/>
+        <attr name="Ch_Bottom_Time" format="string"/>
+        <attr name="Ch_middle_Url" format="string"/>
+        <attr name="Ch_ImageRadius" format="integer"/>
     </declare-styleable>
 </resources>
