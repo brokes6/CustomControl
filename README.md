@@ -122,3 +122,7 @@ implementation 'com.github.brokes6:CustomControl:v1.0.2'
 	//若没有设置TopUrl，则会默认设置一个纯色背景
         item_two.setMiddleUrl("https://i1.hdslb.com/bfs/face/acc7a0e97bf9f6c4d047777e40270a39bc7f4f7d.jpg");
 ```
+## 使用说明:<br>
+组合使用了以下<br>
+implementation 'com.gcssloop.widget:rclayout:1.8.1'( https://github.com/GcsSloop/rclayout )<br>
+implementation 'de.hdodenhof:circleimageview:3.0.0'( https://github.com/hdodenhof/CircleImageView )
