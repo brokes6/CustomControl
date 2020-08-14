@@ -14,7 +14,7 @@ allprojects {
 ```
 ## Step 2. Add the dependency<br>
 ```Java
-implementation 'com.github.brokes6:CustomControl:v1.1.3'
+implementation 'com.github.brokes6:CustomControl:1.1.6'
 ```
 # IntPutNumRelativeLayout:<br>
 ## 效果如下:<br>
@@ -99,22 +99,31 @@ implementation 'com.github.brokes6:CustomControl:v1.1.3'
 # CustomChannelView:<br>
 ## 效果如下:<br>
 ![image](https://github.com/brokes6/CustomControl/blob/master/CustomControlLibs/src/showresources/image6.jpg)<br>
+中间的图片会自动的定位到上边图片和下边文字的中间，上边图片永远站整个高度的2/5<br>
+## 功能介绍:<br>
+1.整体圆角<br>
+2.整体阴影<br>
+3.设置上半部分的图片（不设置的话，默认纯色背景）<br>
+4.设置中间图片，大小（位置自动定位）<br>
+5.设置下半部分标题文字，大小，颜色<br>
+6.设置下半部分补充说明，大小，颜色<br>
 ## 属性如下:<br>
 ```Java
- 	<attr name="Ch_TopUrl" format="string"/>
+ 	<attr name="Ch_TopUrl" format="string|color"/>
         <attr name="Ch_Bottom_Text" format="string"/>
         <attr name="Ch_Bottom_Time" format="string"/>
-        <attr name="Ch_middle_Url" format="string"/>
+        <attr name="Ch_middle_Url" format="string|color"/>
         <attr name="Ch_ImageRadius" format="integer"/>
+        <attr name="Ch_Middle_Image_Size" format="integer"/>
 ```
 ## 使用如下:<br>
 ```Java
-<com.example.customcontrollibs.CustomChannelView
-            android:layout_width="140dp"
+ <com.example.customcontrollibs.CustomChannelView
+            android:layout_width="160dp"
             android:layout_height="200dp"
+            android:layout_margin="50dp"
             app:Ch_Bottom_Text="起飞~"
-            app:Ch_Bottom_Time="08-10浏览"
-            android:elevation="6dp"/>
+            app:Ch_Bottom_Time="08-10浏览" />
 	    
 	 //在activity/fragment中设置url
 	item_two = findViewById(R.id.item_two);
@@ -124,5 +133,5 @@ implementation 'com.github.brokes6:CustomControl:v1.1.3'
 ```
 ## 使用说明:<br>
 组合使用了以下<br>
-implementation 'com.gcssloop.widget:rclayout:1.8.1'( https://github.com/GcsSloop/rclayout )<br>
-implementation 'de.hdodenhof:circleimageview:3.0.0'( https://github.com/hdodenhof/CircleImageView )
+1.CardView卡片布局<br>
+2.CircleImageView(圆形图片 github地址：https://github.com/hdodenhof/CircleImageView )<br>
