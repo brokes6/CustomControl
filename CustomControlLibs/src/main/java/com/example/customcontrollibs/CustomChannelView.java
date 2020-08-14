@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -56,6 +57,13 @@ public class CustomChannelView extends RelativeLayout {
         time = view.findViewById(R.id.CC_Time);
         CC_Image = view.findViewById(R.id.CC_Image);
 
+        topImage.post(new Runnable() {
+            @Override
+            public void run() {
+                mTopImageHeight = topImage.getMeasuredHeight();
+                setMiddleImagePosition(mTopImageHeight);
+            }
+        });
         TypedArray array = mContext.obtainStyledAttributes(attrs, R.styleable.CustomChannelView);
         setTopUrl(array.getString(R.styleable.CustomChannelView_Ch_TopUrl));
         setThemeText(array.getString(R.styleable.CustomChannelView_Ch_Bottom_Text));
@@ -89,13 +97,6 @@ public class CustomChannelView extends RelativeLayout {
         }
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasWindowFocus) {
-        super.onWindowFocusChanged(hasWindowFocus);
-        mTopImageHeight = topImage.getMeasuredHeight();
-        setMiddleImagePosition(mTopImageHeight);
-    }
-
     public void setMiddleImageSize(int value){
         mPx = DensityUtil.dip2px(mContext, value);
         //将用户输入的数据转换为dp
@@ -109,7 +110,7 @@ public class CustomChannelView extends RelativeLayout {
 
     private void setMiddleImagePosition(int value){
         FrameLayout.LayoutParams linearParams = (FrameLayout.LayoutParams) middleImage.getLayoutParams();
-        Log.e(TAG, "setMiddleImagePosition: 图像大小为:"+ mPx+"topImage大小为"+value+"图像一半为"+(mPx/2)+"最后结果为:"+(value-(mPx/2)));
+//        Log.e(TAG, "setMiddleImagePosition: 图像大小为:"+ mPx+"topImage大小为"+value+"图像一半为"+(mPx/2)+"最后结果为:"+(value-(mPx/2)));
         linearParams.topMargin = (value-(mPx/2));
         middleImage.setLayoutParams(linearParams);
     }
