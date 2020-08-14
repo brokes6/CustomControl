@@ -6,14 +6,15 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 
 import com.bumptech.glide.Glide;
-import com.gcssloop.widget.RCRelativeLayout;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -27,7 +28,10 @@ public class CustomChannelView extends RelativeLayout {
     private ImageView topImage;
     private CircleImageView middleImage;
     private TextView title, time;
-    private RCRelativeLayout CC_Image;
+    private CardView CC_Image;
+    private View ImageView;
+    private int mTopImageHeight;
+    private int mPx;
 
     public CustomChannelView(Context context) {
         this(context, null);
@@ -58,6 +62,7 @@ public class CustomChannelView extends RelativeLayout {
         setThemeTime(array.getString(R.styleable.CustomChannelView_Ch_Bottom_Time));
         setMiddleUrl(array.getString(R.styleable.CustomChannelView_Ch_middle_Url));
         setImageRound(array.getInt(R.styleable.CustomChannelView_Ch_ImageRadius, 15));
+        setMiddleImageSize(array.getInt(R.styleable.CustomChannelView_Ch_Middle_Image_Size,50));
         array.recycle();
     }
 
@@ -84,6 +89,30 @@ public class CustomChannelView extends RelativeLayout {
         }
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasWindowFocus) {
+        super.onWindowFocusChanged(hasWindowFocus);
+        mTopImageHeight = topImage.getMeasuredHeight();
+        setMiddleImagePosition(mTopImageHeight);
+    }
+
+    public void setMiddleImageSize(int value){
+        mPx = DensityUtil.dip2px(mContext, value);
+        //将用户输入的数据转换为dp
+        FrameLayout.LayoutParams linearParams = (FrameLayout.LayoutParams) middleImage.getLayoutParams();
+        //取控件imageView当前的布局参数 linearParams.height/width = value;// 控件的高强制设成用户设置的
+        linearParams.width = mPx;
+        linearParams.height = mPx;
+//        linearParams.topMargin = (mTopImageHeight- mPx);
+        // 控件的宽强制设成30
+        middleImage.setLayoutParams(linearParams);
+    }
+
+    private void setMiddleImagePosition(int value){
+        FrameLayout.LayoutParams linearParams = (FrameLayout.LayoutParams) middleImage.getLayoutParams();
+        linearParams.topMargin = (value-(mPx/2));
+        middleImage.setLayoutParams(linearParams);
+    }
 
     public void setImageRound(int value) {
         CC_Image.setRadius(value);
