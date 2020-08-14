@@ -103,13 +103,13 @@ public class CustomChannelView extends RelativeLayout {
         //取控件imageView当前的布局参数 linearParams.height/width = value;// 控件的高强制设成用户设置的
         linearParams.width = mPx;
         linearParams.height = mPx;
-//        linearParams.topMargin = (mTopImageHeight- mPx);
-        // 控件的宽强制设成30
+        // 控件的宽强制设成mPx
         middleImage.setLayoutParams(linearParams);
     }
 
     private void setMiddleImagePosition(int value){
         FrameLayout.LayoutParams linearParams = (FrameLayout.LayoutParams) middleImage.getLayoutParams();
+        Log.e(TAG, "setMiddleImagePosition: 图像大小为:"+ mPx+"topImage大小为"+value+"图像一半为"+(mPx/2)+"最后结果为:"+(value-(mPx/2)));
         linearParams.topMargin = (value-(mPx/2));
         middleImage.setLayoutParams(linearParams);
     }
