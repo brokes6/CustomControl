@@ -14,7 +14,7 @@ allprojects {
 ```
 ## Step 2. Add the dependency<br>
 ```Java
-implementation 'com.github.brokes6:CustomControl:1.1.6'
+implementation 'com.github.brokes6:CustomControl:1.1.7'
 ```
 # IntPutNumRelativeLayout:<br>
 ## 效果如下:<br>
@@ -107,14 +107,15 @@ implementation 'com.github.brokes6:CustomControl:1.1.6'
 4.设置中间图片，大小（位置自动定位）<br>
 5.设置下半部分标题文字，大小，颜色<br>
 6.设置下半部分补充说明，大小，颜色<br>
+7.上边的图片会有一层遮挡层，自动获取中间图片的主色调来当透明背景（此方法默认开启）
 ## 属性如下:<br>
 ```Java
- 	<attr name="Ch_TopUrl" format="string|color"/>
+ 	<attr name="Ch_Top_Drawable" format="reference|color"/>
         <attr name="Ch_Bottom_Text" format="string"/>
         <attr name="Ch_Bottom_Time" format="string"/>
-        <attr name="Ch_middle_Url" format="string|color"/>
         <attr name="Ch_ImageRadius" format="integer"/>
         <attr name="Ch_Middle_Image_Size" format="integer"/>
+        <attr name="CH_Is_occlusion_on" format="boolean"/>
 ```
 ## 使用如下:<br>
 ```Java
