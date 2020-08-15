@@ -2,20 +2,24 @@ package com.example.customcontrollibs;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -26,13 +30,13 @@ public class CustomChannelView extends RelativeLayout {
     private static final String TAG = "CustomChannelView";
     private Context mContext;
     private View view;
-    private ImageView topImage;
+    private ImageView topImage,ImageBaffle;
     private CircleImageView middleImage;
     private TextView title, time;
     private CardView CC_Image;
-    private View ImageView;
     private int mTopImageHeight;
     private int mPx;
+    private boolean mIsOcclusion;
 
     public CustomChannelView(Context context) {
         this(context, null);
@@ -52,6 +56,7 @@ public class CustomChannelView extends RelativeLayout {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.custom_channel_view, this, true);
         topImage = view.findViewById(R.id.CC_topImage);
+        ImageBaffle = view.findViewById(R.id.baffle);
         middleImage = view.findViewById(R.id.CC_middleImage);
         title = view.findViewById(R.id.CC_Title);
         time = view.findViewById(R.id.CC_Time);
@@ -65,10 +70,10 @@ public class CustomChannelView extends RelativeLayout {
             }
         });
         TypedArray array = mContext.obtainStyledAttributes(attrs, R.styleable.CustomChannelView);
-        setTopUrl(array.getString(R.styleable.CustomChannelView_Ch_TopUrl));
+        setTopDrawable(array.getDrawable(R.styleable.CustomChannelView_Ch_Top_Drawable));
+        IsOcclusion_on(array.getBoolean(R.styleable.CustomChannelView_CH_Is_occlusion_on,true));
         setThemeText(array.getString(R.styleable.CustomChannelView_Ch_Bottom_Text));
         setThemeTime(array.getString(R.styleable.CustomChannelView_Ch_Bottom_Time));
-        setMiddleUrl(array.getString(R.styleable.CustomChannelView_Ch_middle_Url));
         setImageRound(array.getInt(R.styleable.CustomChannelView_Ch_ImageRadius, 15));
         setMiddleImageSize(array.getInt(R.styleable.CustomChannelView_Ch_Middle_Image_Size,50));
         array.recycle();
@@ -83,6 +88,10 @@ public class CustomChannelView extends RelativeLayout {
         }
     }
 
+    public void setTopDrawable(Drawable d){
+        topImage.setImageDrawable(d);
+    }
+
     public void setThemeText(String text) {
         title.setText(text);
     }
@@ -91,9 +100,33 @@ public class CustomChannelView extends RelativeLayout {
         time.setText(textTime);
     }
 
+    public void IsOcclusion_on(boolean value){
+        mIsOcclusion = value;
+    }
+
+    public boolean IsOcclusion(){
+        return mIsOcclusion;
+    }
+
     public void setMiddleUrl(String url) {
         if (url != null) {
             Glide.with(mContext).load(url).into(middleImage);
+            if (mIsOcclusion){
+                Glide.with(mContext)
+                        .asBitmap()
+                        .load(url)
+                        .into(new CustomTarget<Bitmap>() {
+                            @Override
+                            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                                PaletteHelper.setPaletteColor(resource, ImageBaffle);
+                            }
+
+                            @Override
+                            public void onLoadCleared(@Nullable Drawable placeholder) {
+
+                            }
+                        });
+            }
         }
     }
 

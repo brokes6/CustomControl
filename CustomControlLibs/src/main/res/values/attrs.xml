@@ -54,11 +54,11 @@
     </declare-styleable>
 
     <declare-styleable name="CustomChannelView">
-        <attr name="Ch_TopUrl" format="string|color"/>
+        <attr name="Ch_Top_Drawable" format="reference|color"/>
         <attr name="Ch_Bottom_Text" format="string"/>
         <attr name="Ch_Bottom_Time" format="string"/>
-        <attr name="Ch_middle_Url" format="string|color"/>
         <attr name="Ch_ImageRadius" format="integer"/>
         <attr name="Ch_Middle_Image_Size" format="integer"/>
+        <attr name="CH_Is_occlusion_on" format="boolean"/>
     </declare-styleable>
 </resources>
