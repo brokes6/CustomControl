@@ -61,4 +61,13 @@
         <attr name="Ch_Middle_Image_Size" format="integer"/>
         <attr name="CH_Is_occlusion_on" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="Selector">
+        <!--单选按钮图片-->
+        <attr name="img" format="reference" />
+        <!--单选按钮选中效果-->
+        <attr name="indicator" format="reference" />
+        <!--单选按钮标签-->
+        <attr name="tag" format="string" />
+    </declare-styleable>
 </resources>

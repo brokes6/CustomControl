@@ -33,6 +33,39 @@ public class MenuItemLayout extends FrameLayout {
     public int divideLineStyle = NO_LINE;
     private boolean isShowRedHintImg = false;
 
+    public MenuItemLayout(@NonNull Context context) {
+        this(context, null);
+    }
+
+    public MenuItemLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public MenuItemLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context, attrs);
+    }
+
+    private void init(Context context, AttributeSet attrs) {
+        mcontext = context;
+        LayoutInflater inflater = (LayoutInflater) mcontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        view = inflater.inflate(R.layout.item_menu_layout, this, true);
+        main_text = view.findViewById(R.id.text);
+        hint_text = view.findViewById(R.id.text_hint);
+        text_img = view.findViewById(R.id.text_img);
+        more = view.findViewById(R.id.more);
+        more_right = view.findViewById(R.id.more_right);
+        linearLayout = view.findViewById(R.id.main_lin);
+
+        TypedArray a = mcontext.obtainStyledAttributes(attrs, R.styleable.MenuItemLayout);
+        setTitleText(a.getString(R.styleable.MenuItemLayout_TitleText));
+        setHint_text(a.getString(R.styleable.MenuItemLayout_PromptText));
+        setIconImgId(a.getResourceId(R.styleable.MenuItemLayout_TitleImg, 10000));
+        isSwitchmore(a.getBoolean(R.styleable.MenuItemLayout_isSwitch, false));
+        setLinBackground(a.getResourceId(R.styleable.MenuItemLayout_Background, -1));
+        a.recycle();
+    }
+
     public int getIconImgId() {
         return textImgId;
     }
@@ -41,6 +74,8 @@ public class MenuItemLayout extends FrameLayout {
         if (iconImgId != 10000) {
             this.textImgId = iconImgId;
             text_img.setImageResource(iconImgId);
+        } else {
+            text_img.setVisibility(View.GONE);
         }
     }
 
@@ -88,38 +123,6 @@ public class MenuItemLayout extends FrameLayout {
         linearLayout.setBackgroundResource(reference);
     }
 
-    public MenuItemLayout(@NonNull Context context) {
-        this(context, null);
-    }
-
-    public MenuItemLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public MenuItemLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init(context, attrs);
-    }
-
-    private void init(Context context, AttributeSet attrs) {
-        mcontext = context;
-        LayoutInflater inflater = (LayoutInflater) mcontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = inflater.inflate(R.layout.item_menu_layout, this, true);
-        main_text = view.findViewById(R.id.text);
-        hint_text = view.findViewById(R.id.text_hint);
-        text_img = view.findViewById(R.id.text_img);
-        more = view.findViewById(R.id.more);
-        more_right = view.findViewById(R.id.more_right);
-        linearLayout = view.findViewById(R.id.main_lin);
-
-        TypedArray a = mcontext.obtainStyledAttributes(attrs, R.styleable.MenuItemLayout);
-        setTitleText(a.getString(R.styleable.MenuItemLayout_TitleText));
-        setHint_text(a.getString(R.styleable.MenuItemLayout_PromptText));
-        setIconImgId(a.getResourceId(R.styleable.MenuItemLayout_TitleImg, 10000));
-        isSwitchmore(a.getBoolean(R.styleable.MenuItemLayout_isSwitch, false));
-        setLinBackground(a.getResourceId(R.styleable.MenuItemLayout_Background, -1));
-        a.recycle();
-    }
 
     public void setViewOnlickListener(OnClickListener onlickListener) {
         this.onClickListener = onlickListener;
