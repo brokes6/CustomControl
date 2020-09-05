@@ -4,6 +4,8 @@
     android:id="@+id/CC_Image"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:cardUseCompatPadding="true"
+    android:stateListAnimator="@drawable/lift_on_touch"
     app:cardElevation="5dp">
 
 
