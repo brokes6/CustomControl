@@ -18,7 +18,7 @@ import androidx.annotation.Nullable;
 
 public class MenuItemLayout extends FrameLayout {
     private static final String TAG = "MenuItemLayout";
-    private Context mcontext;
+    private Context mContext;
     private View view;
     private TextView main_text, hint_text,xian;
     private ImageView text_img, more, more_right;
@@ -48,8 +48,8 @@ public class MenuItemLayout extends FrameLayout {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        mcontext = context;
-        LayoutInflater inflater = (LayoutInflater) mcontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mContext = context;
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.item_menu_layout, this, true);
         main_text = view.findViewById(R.id.text);
         hint_text = view.findViewById(R.id.text_hint);
@@ -59,7 +59,7 @@ public class MenuItemLayout extends FrameLayout {
         linearLayout = view.findViewById(R.id.main_lin);
         xian = view.findViewById(R.id.xian);
 
-        TypedArray a = mcontext.obtainStyledAttributes(attrs, R.styleable.MenuItemLayout);
+        TypedArray a = mContext.obtainStyledAttributes(attrs, R.styleable.MenuItemLayout);
         setTitleText(a.getString(R.styleable.MenuItemLayout_TitleText));
         setHint_text(a.getString(R.styleable.MenuItemLayout_PromptText));
         setIconImgId(a.getResourceId(R.styleable.MenuItemLayout_TitleImg, 10000));
@@ -67,7 +67,25 @@ public class MenuItemLayout extends FrameLayout {
         setLinBackground(a.getResourceId(R.styleable.MenuItemLayout_Background, -1));
         setImageLeftMargin(a.getInt(R.styleable.MenuItemLayout_ImageLeftMargin,0));
         isUnderline(a.getBoolean(R.styleable.MenuItemLayout_Underline,true));
+        setTitleSize(a.getInt(R.styleable.MenuItemLayout_TitleSize,19));
+        setImageSize(a.getInt(R.styleable.MenuItemLayout_ImageSize,24));
         a.recycle();
+    }
+
+    public void setTitleSize(int value){
+        main_text.setTextSize(value);
+    }
+
+    public void setImageSize(int value){
+        int px = DensityUtil.dip2px(mContext, value);
+        //将用户输入的数据转换为dp
+        LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) text_img.getLayoutParams();
+        //取控件imageView当前的布局参数 linearParams.height/width = value;// 控件的高强制设成用户设置的
+        linearParams.width = px;
+        linearParams.height = px;
+        // 控件的宽强制设成30
+        text_img.setLayoutParams(linearParams);
+        //使设置好的布局参数应用到控件
     }
 
     public void isUnderline(boolean value){
