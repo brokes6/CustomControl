@@ -6,6 +6,8 @@
         <attr name="TitleImg" format="reference" />
         <attr name="Background" format="reference" />
         <attr name="isSwitch" format="boolean" />
+        <attr name="ImageLeftMargin" format="integer"/>
+        <attr name="Underline" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="IntPutNumRelativeLayout">

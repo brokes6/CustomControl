@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -19,7 +20,7 @@ public class MenuItemLayout extends FrameLayout {
     private static final String TAG = "MenuItemLayout";
     private Context mcontext;
     private View view;
-    private TextView main_text, hint_text;
+    private TextView main_text, hint_text,xian;
     private ImageView text_img, more, more_right;
     private OnClickListener onClickListener;
     private String titleText;
@@ -56,6 +57,7 @@ public class MenuItemLayout extends FrameLayout {
         more = view.findViewById(R.id.more);
         more_right = view.findViewById(R.id.more_right);
         linearLayout = view.findViewById(R.id.main_lin);
+        xian = view.findViewById(R.id.xian);
 
         TypedArray a = mcontext.obtainStyledAttributes(attrs, R.styleable.MenuItemLayout);
         setTitleText(a.getString(R.styleable.MenuItemLayout_TitleText));
@@ -63,7 +65,21 @@ public class MenuItemLayout extends FrameLayout {
         setIconImgId(a.getResourceId(R.styleable.MenuItemLayout_TitleImg, 10000));
         isSwitchmore(a.getBoolean(R.styleable.MenuItemLayout_isSwitch, false));
         setLinBackground(a.getResourceId(R.styleable.MenuItemLayout_Background, -1));
+        setImageLeftMargin(a.getInt(R.styleable.MenuItemLayout_ImageLeftMargin,0));
+        isUnderline(a.getBoolean(R.styleable.MenuItemLayout_Underline,true));
         a.recycle();
+    }
+
+    public void isUnderline(boolean value){
+        if (!value){
+            xian.setVisibility(GONE);
+        }else{
+            xian.setVisibility(VISIBLE);
+        }
+    }
+
+    public void setImageLeftMargin(int value){
+        setMargins(text_img,value,0,0,0);
     }
 
     public int getIconImgId() {
@@ -98,6 +114,8 @@ public class MenuItemLayout extends FrameLayout {
         if (text != null) {
             this.hintText = text;
             hint_text.setText(text);
+        }else{
+            hint_text.setVisibility(GONE);
         }
     }
 
@@ -135,5 +153,13 @@ public class MenuItemLayout extends FrameLayout {
 
     public TextView getHintTv() {
         return hint_text;
+    }
+
+    public static void setMargins (View v, int l, int t, int r, int b) {
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            p.setMargins(l, t, r, b);
+            v.requestLayout();
+        }
     }
 }
