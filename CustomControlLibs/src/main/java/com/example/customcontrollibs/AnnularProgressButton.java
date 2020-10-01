@@ -12,8 +12,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 
+import static android.content.ContentValues.TAG;
+
 public class AnnularProgressButton extends View {
 
+    private ProgressButtonFinishCallback mProgressButtonFinishCallback;
     // 画实心圆的画笔
     private Paint mCirclePaint;
     // 画圆环的画笔
@@ -41,7 +44,7 @@ public class AnnularProgressButton extends View {
     // 总进度
     private int mTotalProgress = 300;
     // 当前进度
-    private int mProgress;
+    public int mProgress;
 
     private boolean isFinish;
 
@@ -58,16 +61,19 @@ public class AnnularProgressButton extends View {
                 switch ( event.getAction()){
                     case  MotionEvent.ACTION_DOWN:
                         startAnimationProgress(300);
+                        Log.e(TAG, "xxxxxxx"+mProgress );
                         break;
                     case  MotionEvent.ACTION_UP:
                         if(mProgress >= 300){
                             if(!isFinish){
+                                Log.e(TAG, "xxxxxxx"+mProgress );
                                 mProgressButtonFinishCallback.onFinish();
                                 return false;
                             }
                         }
                         if(mProgress != 300){
                             if(mProgress < 300){
+                                Log.e(TAG, "xxxxxxx"+mProgress );
                                 stopAnimationProgress(mProgress);
                                 mProgressButtonFinishCallback.onCancel();
                             }
@@ -144,9 +150,6 @@ public class AnnularProgressButton extends View {
     }
 
 
-
-    private ProgressButtonFinishCallback mProgressButtonFinishCallback;
-
     public void setListener(ProgressButtonFinishCallback progressButtonFinishCallback){
         mProgressButtonFinishCallback = progressButtonFinishCallback;
     }
@@ -160,7 +163,7 @@ public class AnnularProgressButton extends View {
     private ValueAnimator stopAnimator;
 
     //按压开始
-    private void startAnimationProgress(int progress) {
+    public void startAnimationProgress(int progress) {
         isFinish = false;
         if(null!=stopAnimator){
             if(stopAnimator.isRunning()){
@@ -188,7 +191,7 @@ public class AnnularProgressButton extends View {
     }
 
     //按压结束
-    private void stopAnimationProgress(int progress) {
+    public void stopAnimationProgress(int progress) {
         if(null!=startAnimator) {
             if (startAnimator.isRunning()) {
                 startAnimator.cancel();
