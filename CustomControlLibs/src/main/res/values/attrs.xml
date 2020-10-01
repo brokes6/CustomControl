@@ -74,4 +74,12 @@
         <!--单选按钮标签-->
         <attr name="tag" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="TasksCompletedView">
+        <attr name="radius" format="dimension"/>
+        <attr name="strokeWidth" format="dimension"/>
+        <attr name="circleColor" format="color"/>
+        <attr name="ringColor" format="color"/>
+        <attr name="ringCColor" format="color"/>
+    </declare-styleable>
 </resources>
