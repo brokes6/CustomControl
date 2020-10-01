@@ -7,12 +7,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
-
-import static android.content.ContentValues.TAG;
 
 public class AnnularProgressButton extends View {
 
@@ -58,22 +55,19 @@ public class AnnularProgressButton extends View {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                switch ( event.getAction()){
-                    case  MotionEvent.ACTION_DOWN:
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
                         startAnimationProgress(300);
-                        Log.e(TAG, "xxxxxxx"+mProgress );
                         break;
-                    case  MotionEvent.ACTION_UP:
-                        if(mProgress >= 300){
-                            if(!isFinish){
-                                Log.e(TAG, "xxxxxxx"+mProgress );
+                    case MotionEvent.ACTION_UP:
+                        if (mProgress >= 300) {
+                            if (!isFinish) {
                                 mProgressButtonFinishCallback.onFinish();
                                 return false;
                             }
                         }
-                        if(mProgress != 300){
-                            if(mProgress < 300){
-                                Log.e(TAG, "xxxxxxx"+mProgress );
+                        if (mProgress != 300) {
+                            if (mProgress < 300) {
                                 stopAnimationProgress(mProgress);
                                 mProgressButtonFinishCallback.onCancel();
                             }
@@ -125,23 +119,23 @@ public class AnnularProgressButton extends View {
 
         canvas.drawCircle(mXCenter, mYCenter, mBigRingRadius, mCirclePaint);
 
-        if(mProgress == 300){
+        if (mProgress == 300) {
             RectF oval = new RectF();
             oval.left = (mXCenter - mRingRadius);
             oval.top = (mYCenter - mRingRadius);
-            oval.right = mRingRadius  + mXCenter;
+            oval.right = mRingRadius + mXCenter;
             oval.bottom = mRingRadius + mYCenter;
             canvas.drawArc(oval, -90, 360, false, mCirclePaint); //
 
-        }else if (mProgress > 0) {
+        } else if (mProgress > 0) {
 
             RectF oval = new RectF();
             oval.left = (mXCenter - mRingRadius);
             oval.top = (mYCenter - mRingRadius);
-            oval.right = mRingRadius  + mXCenter;
+            oval.right = mRingRadius + mXCenter;
             oval.bottom = mRingRadius + mYCenter;
 
-            canvas.drawArc(oval, -90,  360, false, mRingC3Paint);
+            canvas.drawArc(oval, -90, 360, false, mRingC3Paint);
 
             canvas.drawArc(oval, -90, ((float) mProgress / mTotalProgress) * 360, false, mRingPaint); //
 
@@ -150,12 +144,13 @@ public class AnnularProgressButton extends View {
     }
 
 
-    public void setListener(ProgressButtonFinishCallback progressButtonFinishCallback){
+    public void setListener(ProgressButtonFinishCallback progressButtonFinishCallback) {
         mProgressButtonFinishCallback = progressButtonFinishCallback;
     }
 
-    public interface ProgressButtonFinishCallback{
+    public interface ProgressButtonFinishCallback {
         void onFinish();
+
         void onCancel();
     }
 
@@ -165,8 +160,8 @@ public class AnnularProgressButton extends View {
     //按压开始
     public void startAnimationProgress(int progress) {
         isFinish = false;
-        if(null!=stopAnimator){
-            if(stopAnimator.isRunning()){
+        if (null != stopAnimator) {
+            if (stopAnimator.isRunning()) {
                 stopAnimator.cancel();
             }
         }
@@ -176,11 +171,10 @@ public class AnnularProgressButton extends View {
             public void onAnimationUpdate(ValueAnimator animation) {
                 mProgress = (int) animation.getAnimatedValue();
                 invalidate();
-                if(mProgress >= 300){
-                    if(!isFinish){
+                if (mProgress >= 300) {
+                    if (!isFinish) {
                         isFinish = true;
                         mProgressButtonFinishCallback.onFinish();
-                        Log.v("startAnimationProgress", mProgress + "");
                     }
                 }
             }
@@ -192,7 +186,7 @@ public class AnnularProgressButton extends View {
 
     //按压结束
     public void stopAnimationProgress(int progress) {
-        if(null!=startAnimator) {
+        if (null != startAnimator) {
             if (startAnimator.isRunning()) {
                 startAnimator.cancel();
             }
