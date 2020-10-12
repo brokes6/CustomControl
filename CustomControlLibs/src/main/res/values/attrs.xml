@@ -80,6 +80,13 @@
         <attr name="strokeWidth" format="dimension"/>
         <attr name="circleColor" format="color"/>
         <attr name="ringColor" format="color"/>
-        <attr name="ringCColor" format="color"/>
+        <attr name="ringCColor" format="color"/>.
+    </declare-styleable>
+    
+    <declare-styleable name="DimPleView">
+        <attr name="particlesNum" format="integer"/>
+        <attr name="particlesRadius" format="float"/>
+        <attr name="particlesDiffusionRadius" format="float"/>
+        <attr name="strokeColor" format="reference|color"/>
     </declare-styleable>
 </resources>

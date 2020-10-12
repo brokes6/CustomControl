@@ -43,7 +43,7 @@ public class AnnularProgressButton extends View {
     // 当前进度
     public int mProgress;
 
-    private boolean isFinish;
+    public boolean isFinish;
 
 
     public AnnularProgressButton(Context context, AttributeSet attrs) {
@@ -51,32 +51,6 @@ public class AnnularProgressButton extends View {
         // 获取自定义的属性
         initAttrs(context, attrs);
         initVariable();
-        this.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        startAnimationProgress(300);
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        if (mProgress >= 300) {
-                            if (!isFinish) {
-                                mProgressButtonFinishCallback.onFinish();
-                                return false;
-                            }
-                        }
-                        if (mProgress != 300) {
-                            if (mProgress < 300) {
-                                stopAnimationProgress(mProgress);
-                                mProgressButtonFinishCallback.onCancel();
-                            }
-                        }
-                        break;
-                }
-                return false;
-            }
-        });
     }
 
     private void initAttrs(Context context, AttributeSet attrs) {
