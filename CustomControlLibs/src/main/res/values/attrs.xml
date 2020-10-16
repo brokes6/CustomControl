@@ -6,10 +6,10 @@
         <attr name="TitleImg" format="reference" />
         <attr name="Background" format="reference" />
         <attr name="isSwitch" format="boolean" />
-        <attr name="ImageLeftMargin" format="integer"/>
-        <attr name="Underline" format="boolean"/>
-        <attr name="TitleSize" format="integer"/>
-        <attr name="ImageSize" format="integer"/>
+        <attr name="ImageLeftMargin" format="integer" />
+        <attr name="Underline" format="boolean" />
+        <attr name="TitleSize" format="integer" />
+        <attr name="ImageSize" format="integer" />
     </declare-styleable>
 
     <declare-styleable name="IntPutNumRelativeLayout">
@@ -48,22 +48,22 @@
     </declare-styleable>
 
     <declare-styleable name="ImageTopView">
-        <attr name="Image_Text_Spacing" format="integer"/>
-        <attr name="Text_Size" format="integer"/>
-        <attr name="Image_Text" format="string"/>
-        <attr name="Image_Drawable" format="reference"/>
-        <attr name="Image_Size" format="integer"/>
-        <attr name="Text_Color" format="reference|color"/>
-        <attr name="Is_radius" format="boolean"/>
+        <attr name="Image_Text_Spacing" format="integer" />
+        <attr name="Text_Size" format="integer" />
+        <attr name="Image_Text" format="string" />
+        <attr name="Image_Drawable" format="reference" />
+        <attr name="Image_Size" format="integer" />
+        <attr name="Text_Color" format="reference|color" />
+        <attr name="Is_radius" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="CustomChannelView">
-        <attr name="Ch_Top_Drawable" format="reference|color"/>
-        <attr name="Ch_Bottom_Text" format="string"/>
-        <attr name="Ch_Bottom_Time" format="string"/>
-        <attr name="Ch_ImageRadius" format="integer"/>
-        <attr name="Ch_Middle_Image_Size" format="integer"/>
-        <attr name="CH_Is_occlusion_on" format="boolean"/>
+        <attr name="Ch_Top_Drawable" format="reference|color" />
+        <attr name="Ch_Bottom_Text" format="string" />
+        <attr name="Ch_Bottom_Time" format="string" />
+        <attr name="Ch_ImageRadius" format="integer" />
+        <attr name="Ch_Middle_Image_Size" format="integer" />
+        <attr name="CH_Is_occlusion_on" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="Selector">
@@ -76,17 +76,19 @@
     </declare-styleable>
 
     <declare-styleable name="TasksCompletedView">
-        <attr name="radius" format="dimension"/>
-        <attr name="strokeWidth" format="dimension"/>
-        <attr name="circleColor" format="color"/>
-        <attr name="ringColor" format="color"/>
-        <attr name="ringCColor" format="color"/>.
+        <attr name="radius" format="dimension" />
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="circleColor" format="color" />
+        <attr name="ringColor" format="color" />
+        <attr name="ringCColor" format="color" />.
     </declare-styleable>
-    
+
     <declare-styleable name="DimPleView">
-        <attr name="particlesNum" format="integer"/>
-        <attr name="particlesRadius" format="float"/>
-        <attr name="particlesDiffusionRadius" format="float"/>
-        <attr name="strokeColor" format="reference|color"/>
+        <attr name="particlesNum" format="integer" />
+        <attr name="particlesRadius" format="float" />
+        <attr name="particlesDiffusionRadius" format="float" />
+        <attr name="strokeColor" format="reference|color" />
+        <attr name="strokeOffSet" format="integer" />
     </declare-styleable>
+
 </resources>
