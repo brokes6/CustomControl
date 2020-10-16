@@ -12,11 +12,8 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
-import java.lang.Math.acos
-import java.lang.Math.cos
 import java.lang.StrictMath.sin
 import java.util.*
-import kotlin.system.measureTimeMillis
 
 /**
  * Project:NetEasy
@@ -29,8 +26,8 @@ class DimPleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
     private var particleList = mutableListOf<Particle>()
 
     private var animator = ValueAnimator.ofFloat(0f, 1f)
-    var paint = Paint()
-    var path = Path()
+    private var paint = Paint()
+    private var path = Path()
     private val pathMeasure = PathMeasure()//路径，用于测量扩散圆某一处的X,Y值
     private var pos = FloatArray(2) //扩散圆上某一点的x,y
     private val tan = FloatArray(2)//扩散圆上某一点切线
@@ -51,7 +48,7 @@ class DimPleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
         animator.repeatCount = -1
         animator.interpolator = LinearInterpolator()
         animator.addUpdateListener {
-            updateParticle(it.animatedValue as Float)
+            updateParticle()
             invalidate()
         }
         paint.color = ContextCompat.getColor(context!!, R.color.colorAccent)
@@ -94,14 +91,14 @@ class DimPleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
     }
 
 
-    private fun updateParticle(fl: Float) {
-        particleList.forEachIndexed { index, particle ->
+    private fun updateParticle() {
+        particleList.forEachIndexed { _, particle ->
             if (particle.offSet > particle.maxOffSet) {
                 particle.offSet = 0f
                 particle.speed = random.nextInt(3) + 1.5f
                 particle.maxOffSet = random.nextInt(radius).toFloat()
             }
-            particle.x = (mWidth / 2 + cos(particle.angle) * (diffusionRadius + particle.offSet)).toFloat() + particle.offSetX * particle.direction
+            particle.x = (mWidth / 2 + kotlin.math.cos(particle.angle) * (diffusionRadius + particle.offSet)).toFloat() + particle.offSetX * particle.direction
 
             if (particle.y > mHeight / 2) {
                 particle.y = (sin(particle.angle) * (diffusionRadius + particle.offSet) + mHeight / 2).toFloat()
@@ -116,16 +113,14 @@ class DimPleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        val time = measureTimeMillis {
-            particleList.forEachIndexed { index, particle ->
-                if (particle.offSet > 5f) {
-                    paint.alpha = ((1f - particle.offSet / particle.maxOffSet) * 0.8 * 225f).toInt()
-                    canvas.drawCircle(particle.x, particle.y, particle.radius, paint)
-                } else {
-                    paint.alpha = 225
-                }
+        particleList.forEachIndexed { _, particle ->
+            if (particle.offSet > 5f) {
+                paint.alpha = ((1f - particle.offSet / particle.maxOffSet) * 0.8 * 225f).toInt()
                 canvas.drawCircle(particle.x, particle.y, particle.radius, paint)
+            } else {
+                paint.alpha = 225
             }
+            canvas.drawCircle(particle.x, particle.y, particle.radius, paint)
         }
     }
 
@@ -138,25 +133,17 @@ class DimPleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
         pathMeasure.setPath(path, false)
         for (i in 0..particleNumber) {
             pathMeasure.getPosTan(i / particleNumber.toFloat() * pathMeasure.length, pos, tan)
-            val offSet = random.nextInt(radius)
-            val speed = random.nextInt(2) + 0.5f
-            val randomX = random.nextInt(6) - 3f
-            val randomY = random.nextInt(6) - 3f
-            val offSetX = random.nextInt(3)
-            val direction = random.nextInt(3) - 1.5f
-            val angel = acos(((pos[0] - mWidth / 2) / diffusionRadius).toDouble())
-            val maxOffSet = random.nextInt(radius) + 0f
             particleList.add(
                     Particle(
-                            pos[0] + randomX,
-                            pos[1] + randomY,
+                            pos[0] + random.nextInt(6) - 3f,
+                            pos[1] + random.nextInt(6) - 3f,
                             particleRadius,
-                            offSetX.toFloat(),
-                            offSet.toFloat(),
-                            direction,
-                            speed,
-                            angel,
-                            maxOffSet
+                            random.nextInt(3).toFloat(),
+                            random.nextInt(radius).toFloat(),
+                            random.nextInt(3) - 1.5f,
+                            random.nextInt(2) + 0.5f,
+                            kotlin.math.acos(((pos[0] - mWidth / 2) / diffusionRadius).toDouble()),
+                            random.nextInt(radius) + 0f
                     )
             )
         }
