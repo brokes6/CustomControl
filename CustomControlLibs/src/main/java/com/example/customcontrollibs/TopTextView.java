@@ -29,7 +29,7 @@ public class TopTextView extends LinearLayout {
 
     public TopTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context,attrs);
+        init(context, attrs);
     }
 
     private void init(@NonNull Context context, @Nullable AttributeSet attrs) {
@@ -42,27 +42,35 @@ public class TopTextView extends LinearLayout {
         TypedArray array = mContext.obtainStyledAttributes(attrs, R.styleable.TopTextView);
         setTop_Text(array.getString(R.styleable.TopTextView_Top_Text));
         setBottom_Text(array.getString(R.styleable.TopTextView_Bottom_Text));
-        setTextSpacing(array.getInt(R.styleable.TopTextView_Text_Spacing,0));
+        setTextSpacing(array.getInt(R.styleable.TopTextView_Text_Spacing, 0));
+        setBottomTextSize(array.getDimension(R.styleable.TopTextView_Bottom_Text_Size, 14));
+        setTopTextSize(array.getDimension(R.styleable.TopTextView_Top_Text_Size, 12));
         array.recycle();
     }
-    public void setTop_Text(String topText){
+
+    public void setTop_Text(String topText) {
         this.mTopText = topText;
         Top_Text.setText(topText);
     }
-    public void setBottom_Text(String bottomText){
+
+    public void setBottom_Text(String bottomText) {
         this.mBottomText = bottomText;
         Bottom_Text.setText(bottomText);
     }
-    public void setTextSpacing(int spacing){
+
+    public void setTextSpacing(int spacing) {
         mSpacing = spacing;
         LinearLayout.LayoutParams lp = (LayoutParams) Bottom_Text.getLayoutParams();
-        lp.setMargins(0,spacing,0,0);
+        lp.setMargins(0, spacing, 0, 0);
         Bottom_Text.setLayoutParams(lp);
     }
-    public void setTopTextSize(int value){
+
+    public void setTopTextSize(float value) {
+
         Top_Text.setTextSize(value);
     }
-    public void setBottomTextSize(int value){
+
+    public void setBottomTextSize(float value) {
         Bottom_Text.setTextSize(value);
     }
 
