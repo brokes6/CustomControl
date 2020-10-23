@@ -14,7 +14,7 @@ allprojects {
 ```
 ## Step 2. Add the dependency<br>
 ```Java
-implementation 'com.github.brokes6:CustomControl:1.x.x'(以实际版本号为准)
+implementation 'com.github.brokes6:CustomControl:1.x.x'(以项目的Releases版本号为准)
 ```
 # IntPutNumRelativeLayout:<br>
 ## 效果如下:<br>
