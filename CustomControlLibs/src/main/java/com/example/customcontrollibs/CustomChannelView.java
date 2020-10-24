@@ -78,6 +78,7 @@ public class CustomChannelView extends RelativeLayout {
         setMiddleImageSize(array.getInt(R.styleable.CustomChannelView_Ch_Middle_Image_Size,50));
         setBottomTextSize(array.getDimension(R.styleable.CustomChannelView_CH_Bottom_Size,8));
         setBottomTimeSize(array.getDimension(R.styleable.CustomChannelView_CH_Bottom_TimeSize,6));
+        setBottomPadding(array.getInt(R.styleable.CustomChannelView_CH_Bottom_paddingTop,0));
         array.recycle();
     }
 
@@ -112,6 +113,10 @@ public class CustomChannelView extends RelativeLayout {
 
     public void setBottomTimeSize(float value) {
         time.setTextSize(value);
+    }
+
+    public void setBottomPadding(int value){
+        title.setPadding(0,value,0,0);
     }
 
     public boolean IsOcclusion(){

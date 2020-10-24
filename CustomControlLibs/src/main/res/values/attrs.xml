@@ -66,6 +66,7 @@
         <attr name="CH_Is_occlusion_on" format="boolean" />
         <attr name="CH_Bottom_Size" format="dimension" />
         <attr name="CH_Bottom_TimeSize" format="dimension"/>
+        <attr name="CH_Bottom_paddingTop" format="integer"/>
     </declare-styleable>
 
     <declare-styleable name="Selector">
