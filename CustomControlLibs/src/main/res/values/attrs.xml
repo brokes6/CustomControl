@@ -64,6 +64,8 @@
         <attr name="Ch_ImageRadius" format="integer" />
         <attr name="Ch_Middle_Image_Size" format="integer" />
         <attr name="CH_Is_occlusion_on" format="boolean" />
+        <attr name="CH_Bottom_Size" format="dimension" />
+        <attr name="CH_Bottom_TimeSize" format="dimension"/>
     </declare-styleable>
 
     <declare-styleable name="Selector">
