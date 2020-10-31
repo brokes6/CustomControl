@@ -18,8 +18,8 @@ public abstract class BaseAdapter<T, V extends RecyclerView.ViewHolder> extends 
     public static final int TYPE_HEADER = 0; //说明是带有Header的
     public static final int TYPE_FOOTER = 1; //说明是带有Footer的
     public static final int TYPE_NORMAL = 2; //说明是不带有header和footer的
-    private View mHeaderView;
-    private View mFooterView;
+    public View mHeaderView;
+    public View mFooterView;
 
     /**
      * 数据源
@@ -93,6 +93,12 @@ public abstract class BaseAdapter<T, V extends RecyclerView.ViewHolder> extends 
     protected View inflateView(ViewGroup parent, @LayoutRes int layoutId) {
         return LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
     }
+
+    protected class V extends RecyclerView.ViewHolder {
+        public V(@NonNull View itemView) {
+            super(itemView);
+        }
+    };
 
     public void setHeaderView(View headerView) {
         mHeaderView = headerView;
