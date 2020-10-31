@@ -94,12 +94,6 @@ public abstract class BaseAdapter<T, V extends RecyclerView.ViewHolder> extends 
         return LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
     }
 
-    protected class V extends RecyclerView.ViewHolder {
-        public V(@NonNull View itemView) {
-            super(itemView);
-        }
-    };
-
     public void setHeaderView(View headerView) {
         mHeaderView = headerView;
         notifyItemInserted(0);
