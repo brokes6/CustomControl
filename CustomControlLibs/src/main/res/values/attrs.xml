@@ -94,4 +94,8 @@
         <attr name="strokeOffSet" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="RoundRelativeLayout">
+        <attr name="rlRadius" format="dimension" />
+        <attr name="rlClipBackground" format="boolean" />
+    </declare-styleable>
 </resources>
