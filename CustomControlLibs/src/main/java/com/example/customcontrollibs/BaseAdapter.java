@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -14,6 +15,12 @@ import java.util.Collection;
 import java.util.List;
 
 public abstract class BaseAdapter<T, V extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<V> {
+    public static final int TYPE_HEADER = 0; //说明是带有Header的
+    public static final int TYPE_FOOTER = 1; //说明是带有Footer的
+    public static final int TYPE_NORMAL = 2; //说明是不带有header和footer的
+    private View mHeaderView;
+    private View mFooterView;
+
     /**
      * 数据源
      */
@@ -86,6 +93,59 @@ public abstract class BaseAdapter<T, V extends RecyclerView.ViewHolder> extends 
     protected View inflateView(ViewGroup parent, @LayoutRes int layoutId) {
         return LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
     }
+
+    public void setHeaderView(View headerView) {
+        mHeaderView = headerView;
+        notifyItemInserted(0);
+    }
+
+    public void setFooterView(View FooterView) {
+        mFooterView = FooterView;
+        notifyItemInserted(getItemCount()-1);
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
+        if(manager instanceof GridLayoutManager){   // 布局是GridLayoutManager所管理
+            final GridLayoutManager gridLayoutManager = (GridLayoutManager) manager;
+            gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    // 如果是Header、Footer的对象则占据spanCount的位置，否则就只占用1个位置
+                    return (isHeader(position) || isFooter(position)) ? gridLayoutManager.getSpanCount() : 1;
+                }
+            });
+        }
+    }
+
+    /**
+     * 判断是否是Header的位置
+     * 如果是Header的则返回true否则返回false
+     * @param position
+     * @return
+     */
+    public boolean isHeader(int position){
+        if (mHeaderView ==null){
+            return false;
+        }
+        return position == 0;
+    }
+
+    /**
+     * 判断是否是Footer的位置
+     * 如果是Footer的位置则返回true否则返回false
+     * @param position
+     * @return
+     */
+    public boolean isFooter(int position){
+        if (mFooterView ==null){
+            return false;
+        }
+        return position < getItemCount() && position >= getItemCount() - 1;
+    }
+
 
     /**
      * 设置item类型
