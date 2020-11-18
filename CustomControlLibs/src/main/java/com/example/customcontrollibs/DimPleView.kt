@@ -16,8 +16,7 @@ import java.lang.StrictMath.sin
 import java.util.*
 
 /**
- * Project:NetEasy
- * Created by MLX on 2020/7/26.
+ * Created by FUXINBO on 2020/10/26.
  */
 class DimPleView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
     private var mWidth = 0f;

@@ -83,7 +83,7 @@
         <attr name="strokeWidth" format="dimension" />
         <attr name="circleColor" format="color" />
         <attr name="ringColor" format="color" />
-        <attr name="ringCColor" format="color" />.
+        <attr name="ringCColor" format="color" />
     </declare-styleable>
 
     <declare-styleable name="DimPleView">

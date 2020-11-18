@@ -1,8 +1,7 @@
 package com.example.customcontrollibs
 
 /**
- * Project:NetEasy
- * Created by MLX on 2020/7/26.
+ * Created by FUXINBO on 2020/10/26.
  */
 class Particle(
         var x:Float,
