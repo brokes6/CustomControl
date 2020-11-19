@@ -98,4 +98,8 @@
         <attr name="rlRadius" format="dimension" />
         <attr name="rlClipBackground" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="ShowComment">
+        <attr name="isNetWorkUrl" format="boolean"/>
+    </declare-styleable>
 </resources>
