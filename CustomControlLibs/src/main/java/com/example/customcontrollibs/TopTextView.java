@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -45,7 +46,17 @@ public class TopTextView extends LinearLayout {
         setTextSpacing(array.getInt(R.styleable.TopTextView_Text_Spacing, 0));
         setBottomTextSize(array.getDimension(R.styleable.TopTextView_Bottom_Text_Size, 14));
         setTopTextSize(array.getDimension(R.styleable.TopTextView_Top_Text_Size, 12));
+        setTop_Colo(array.getInt(R.styleable.TopTextView_Top_Text_Color, R.color.Black));
+        setBottom_Colo(array.getInt(R.styleable.TopTextView_Bottom_Text_Color, R.color.Grey_9));
         array.recycle();
+    }
+
+    public void setTop_Colo(@ColorInt int colo){
+        Top_Text.setTextColor(colo);
+    }
+
+    public void setBottom_Colo(@ColorInt int colo){
+        Bottom_Text.setTextColor(colo);
     }
 
     public void setTop_Text(String topText) {
