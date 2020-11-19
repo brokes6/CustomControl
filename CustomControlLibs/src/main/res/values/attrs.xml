@@ -101,5 +101,6 @@
 
     <declare-styleable name="ShowComment">
         <attr name="isNetWorkUrl" format="boolean"/>
+        <attr name="displayPicture" format="boolean"/>
     </declare-styleable>
 </resources>

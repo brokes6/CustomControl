@@ -48,15 +48,24 @@ public class ShowComment extends LinearLayout {
     private void initAttribteSet(AttributeSet attrs) {
         TypedArray array = mContext.obtainStyledAttributes(attrs, R.styleable.ShowComment);
         isNetWorkUrl(array.getBoolean(R.styleable.ShowComment_isNetWorkUrl, true));
+        displayPicture(array.getBoolean(R.styleable.ShowComment_displayPicture,true));
         array.recycle();
     }
 
     public void setImageSize(int value) {
-        int dp = DensityUtil.px2dip(mContext, value);
+        int dp = DensityUtil.dip2px(mContext, value);
         LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) message.getLayoutParams();
         linearParams.width = dp;
         linearParams.height = dp;
         message.setLayoutParams(linearParams);
+    }
+
+    public void displayPicture(boolean judge) {
+        if (judge) {
+            message.setVisibility(VISIBLE);
+        } else {
+            message.setVisibility(GONE);
+        }
     }
 
     public void isNetWorkUrl(boolean judge) {
