@@ -70,7 +70,7 @@ public class ImageTopView extends LinearLayout {
     }
 
     public void setImageSize(int value) {
-        int px = DensityUtil.px2dip(mContext, value);
+        int px = DensityUtil.dip2px(mContext, value);
         if (!mIsRadius){
             //将用户输入的数据转换为dp
             LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) img.getLayoutParams();
