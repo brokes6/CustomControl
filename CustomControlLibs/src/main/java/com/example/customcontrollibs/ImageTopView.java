@@ -8,13 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+import static android.widget.TextView.BufferType.SPANNABLE;
 
 public class ImageTopView extends LinearLayout {
     private Context mContext;
@@ -52,49 +53,49 @@ public class ImageTopView extends LinearLayout {
 //        if (d != null) {
 //            setImageDrawable(d);
 //        }
-        isRadius(array.getBoolean(R.styleable.ImageTopView_Is_radius,false));
+        isRadius(array.getBoolean(R.styleable.ImageTopView_Is_radius, false));
         setDrawable(array.getDrawable(R.styleable.ImageTopView_Image_Drawable));
         setText(array.getString(R.styleable.ImageTopView_Image_Text));
         setTextSpacing(array.getInt(R.styleable.ImageTopView_Image_Text_Spacing, 0));
         setTextSize(array.getInt(R.styleable.ImageTopView_Text_Size, 12));
-        setImageSize(array.getInt(R.styleable.ImageTopView_Image_Size, 30));
-        setTextColor(array.getInt(R.styleable.ImageTopView_Text_Color,-1));
+//        setImageSize(array.getInt(R.styleable.ImageTopView_Image_Size, 30));
+        setTextColor(array.getInt(R.styleable.ImageTopView_Text_Color, -1));
         array.recycle();
     }
 
     public void setTextSpacing(int spacing) {
         mSpacing = spacing;
-        LinearLayout.LayoutParams lp = (LayoutParams) text.getLayoutParams();
+        RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) text.getLayoutParams();
         lp.setMargins(0, spacing, 0, 0);
         text.setLayoutParams(lp);
     }
 
     public void setImageSize(int value) {
         int px = DensityUtil.dip2px(mContext, value);
-        if (!mIsRadius){
+        if (!mIsRadius) {
             //将用户输入的数据转换为dp
-            LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) img.getLayoutParams();
+            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) img.getLayoutParams();
             //取控件imageView当前的布局参数 linearParams.height/width = value;// 控件的高强制设成用户设置的
-            linearParams.width = px;
-            linearParams.height = px;
+            lp.width = px;
+            lp.height = px;
             // 控件的宽强制设成30
-            img.setLayoutParams(linearParams);
+            img.setLayoutParams(lp);
             //使设置好的布局参数应用到控件
-        }else{
+        } else {
             //将用户输入的数据转换为dp
-            LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) radius_img.getLayoutParams();
+            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) radius_img.getLayoutParams();
             //取控件imageView当前的布局参数 linearParams.height/width = value;// 控件的高强制设成用户设置的
-            linearParams.width = px;
-            linearParams.height = px;
+            lp.width = px;
+            lp.height = px;
             // 控件的宽强制设成30
-            radius_img.setLayoutParams(linearParams);
+            radius_img.setLayoutParams(lp);
             //使设置好的布局参数应用到控件
         }
     }
 
     public void setText(String value) {
         this.mText = value;
-        text.setText(mText);
+        text.setText(mText, SPANNABLE);
     }
 
     public void setTextSize(int value) {
@@ -109,32 +110,32 @@ public class ImageTopView extends LinearLayout {
 
     public void setUrl(String url) {
         if (url != null) {
-            if (!mIsRadius){
+            if (!mIsRadius) {
                 Glide.with(mContext).load(url).into(img);
-            }else{
+            } else {
                 Glide.with(mContext).load(url).into(radius_img);
             }
         }
     }
 
     private void setImageDrawable(Drawable drawable) {
-        if (!mIsRadius){
+        if (!mIsRadius) {
             img.setImageDrawable(drawable);
-        }else{
+        } else {
             radius_img.setImageDrawable(drawable);
         }
     }
 
-    public void setTextColor(int color){
+    public void setTextColor(int color) {
         text.setTextColor(color);
     }
 
-    public void isRadius(boolean value){
+    public void isRadius(boolean value) {
         mIsRadius = value;
-        if (mIsRadius){
+        if (mIsRadius) {
             radius_img.setVisibility(View.VISIBLE);
             img.setVisibility(View.GONE);
-        }else{
+        } else {
             radius_img.setVisibility(View.GONE);
             img.setVisibility(View.VISIBLE);
         }

@@ -21,7 +21,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * 其实就是对几个控件的组合，方便使用而已

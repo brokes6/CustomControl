@@ -65,8 +65,8 @@
         <attr name="Ch_Middle_Image_Size" format="integer" />
         <attr name="CH_Is_occlusion_on" format="boolean" />
         <attr name="CH_Bottom_Size" format="dimension" />
-        <attr name="CH_Bottom_TimeSize" format="dimension"/>
-        <attr name="CH_Bottom_paddingTop" format="integer"/>
+        <attr name="CH_Bottom_TimeSize" format="dimension" />
+        <attr name="CH_Bottom_paddingTop" format="integer" />
     </declare-styleable>
 
     <declare-styleable name="Selector">
@@ -97,10 +97,22 @@
     <declare-styleable name="RoundRelativeLayout">
         <attr name="rlRadius" format="dimension" />
         <attr name="rlClipBackground" format="boolean" />
+        <attr name="Left_radius" format="dimension" />
+        <attr name="right_radius" format="dimension" />
+        <attr name="LowerLeft_radius" format="dimension" />
+        <attr name="lowerRight_radius" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="ShowComment">
-        <attr name="isNetWorkUrl" format="boolean"/>
-        <attr name="displayPicture" format="boolean"/>
+        <attr name="isNetWorkUrl" format="boolean" />
+        <attr name="displayPicture" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr format="dimension" name="civ_border_width"/>
+        <attr format="color" name="civ_border_color"/>
+        <attr format="boolean" name="civ_border_overlay"/>
+        <attr format="color" name="civ_circle_background_color"/>
+    </declare-styleable>
+
 </resources>

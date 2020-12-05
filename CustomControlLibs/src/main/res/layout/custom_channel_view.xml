@@ -4,9 +4,9 @@
     android:id="@+id/CC_Image"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardUseCompatPadding="true"
     android:stateListAnimator="@drawable/lift_on_touch"
-    app:cardElevation="5dp">
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true">
 
 
     <LinearLayout
@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:alpha="0.3"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" />
         </RelativeLayout>
 
 
@@ -64,7 +64,7 @@
 
     </LinearLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.example.customcontrollibs.CircleImageView
         android:id="@+id/CC_middleImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
