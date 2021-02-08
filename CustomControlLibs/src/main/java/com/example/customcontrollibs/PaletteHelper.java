@@ -26,19 +26,6 @@ public class PaletteHelper {
         Palette.from(bitmap).maximumColorCount(10).generate(new Palette.PaletteAsyncListener() {
             @Override
             public void onGenerated(@NonNull Palette palette) {
-//                List<Palette.Swatch> list = palette.getSwatches();
-//                int colorSize = 0;
-//                Palette.Swatch maxSwatch = null;
-//                for (int i = 0; i < list.size(); i++) {
-//                    Palette.Swatch swatch = list.get(i);
-//                    if (swatch != null) {
-//                        int population = swatch.getPopulation();
-//                        if (colorSize < population) {
-//                            colorSize = population;
-//                            maxSwatch = swatch;
-//                        }
-//                    }
-//                }
                 Palette.Swatch s = palette.getDominantSwatch();//独特的一种
                 Palette.Swatch s1 = palette.getVibrantSwatch();       //获取到充满活力的这种色调
                 Palette.Swatch s2 = palette.getDarkVibrantSwatch();    //获取充满活力的黑
@@ -47,7 +34,6 @@ public class PaletteHelper {
                 Palette.Swatch s5 = palette.getDarkMutedSwatch();      //获取柔和的黑
                 Palette.Swatch s6 = palette.getLightMutedSwatch();    //获取柔和的亮
                 if (s1 != null) {
-                    Log.e(TAG, "当前遮挡的颜色为:"+ s1.getRgb());
                     view.setBackgroundColor(s1.getRgb());
                 }
             }

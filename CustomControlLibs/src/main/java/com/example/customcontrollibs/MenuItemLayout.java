@@ -20,7 +20,7 @@ public class MenuItemLayout extends FrameLayout {
     private static final String TAG = "MenuItemLayout";
     private Context mContext;
     private View view;
-    private TextView main_text, hint_text,xian;
+    private TextView main_text, hint_text, xian;
     private ImageView text_img, more, more_right;
     private OnClickListener onClickListener;
     private String titleText;
@@ -65,18 +65,18 @@ public class MenuItemLayout extends FrameLayout {
         setIconImgId(a.getResourceId(R.styleable.MenuItemLayout_TitleImg, 10000));
         isSwitchmore(a.getBoolean(R.styleable.MenuItemLayout_isSwitch, false));
         setLinBackground(a.getResourceId(R.styleable.MenuItemLayout_Background, -1));
-        setImageLeftMargin(a.getInt(R.styleable.MenuItemLayout_ImageLeftMargin,0));
-        isUnderline(a.getBoolean(R.styleable.MenuItemLayout_Underline,true));
-        setTitleSize(a.getInt(R.styleable.MenuItemLayout_TitleSize,19));
-        setImageSize(a.getInt(R.styleable.MenuItemLayout_ImageSize,24));
+        setImageLeftMargin(a.getInt(R.styleable.MenuItemLayout_ImageLeftMargin, 0));
+        isUnderline(a.getBoolean(R.styleable.MenuItemLayout_Underline, true));
+        setTitleSize(a.getInt(R.styleable.MenuItemLayout_TitleSize, 19));
+        setImageSize(a.getInt(R.styleable.MenuItemLayout_ImageSize, 24));
         a.recycle();
     }
 
-    public void setTitleSize(int value){
+    public void setTitleSize(int value) {
         main_text.setTextSize(value);
     }
 
-    public void setImageSize(int value){
+    public void setImageSize(int value) {
         int px = DensityUtil.dip2px(mContext, value);
         //将用户输入的数据转换为dp
         LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) text_img.getLayoutParams();
@@ -88,16 +88,16 @@ public class MenuItemLayout extends FrameLayout {
         //使设置好的布局参数应用到控件
     }
 
-    public void isUnderline(boolean value){
-        if (!value){
+    public void isUnderline(boolean value) {
+        if (!value) {
             xian.setVisibility(GONE);
-        }else{
+        } else {
             xian.setVisibility(VISIBLE);
         }
     }
 
-    public void setImageLeftMargin(int value){
-        setMargins(text_img,value,0,0,0);
+    public void setImageLeftMargin(int value) {
+        setMargins(text_img, value, 0, 0, 0);
     }
 
     public int getIconImgId() {
@@ -132,7 +132,7 @@ public class MenuItemLayout extends FrameLayout {
         if (text != null) {
             this.hintText = text;
             hint_text.setText(text);
-        }else{
+        } else {
             hint_text.setVisibility(GONE);
         }
     }
@@ -173,7 +173,7 @@ public class MenuItemLayout extends FrameLayout {
         return hint_text;
     }
 
-    public static void setMargins (View v, int l, int t, int r, int b) {
+    public static void setMargins(View v, int l, int t, int r, int b) {
         if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
             p.setMargins(l, t, r, b);
