@@ -1,4 +1,4 @@
-package com.example.customcontrollibs.EasyNavigationBar;
+package com.example.customcontrollibs.navigation_bar;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

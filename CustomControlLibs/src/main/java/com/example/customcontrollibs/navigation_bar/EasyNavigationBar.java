@@ -1,4 +1,4 @@
-package com.example.customcontrollibs.EasyNavigationBar;
+package com.example.customcontrollibs.navigation_bar;
 
 import android.content.Context;
 import android.content.res.TypedArray;
