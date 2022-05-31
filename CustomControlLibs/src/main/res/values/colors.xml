@@ -12,4 +12,54 @@
     <color name="grey">#454444</color>
     <color name="Black">#000000</color>
     <color name="Grey_9">#999999</color>
+
+    <!-- bottomTab -->
+    <color name="bt_white_2">#FF999999</color>
+    <color name="bt_black_2">#FF000000</color>
+
+    <!-- other -->
+    <color name="teal_700">#FF018786</color>
+
+    <!-- 黑色 -->
+    <color name="black">#000000</color>
+    <color name="black_2">#363636</color>
+    <color name="black_3">#161618</color>
+    <color name="black_4">#161920</color>
+    <color name="black_80">#CC000000</color>
+
+    <!-- 白色 -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_1">#F4F4F4</color>
+    <color name="white_2">#EBEBEB</color>
+
+    <!-- 透明 -->
+    <color name="transparent">#00FFFFFF</color>
+
+    <!-- 红色 -->
+    <color name="red">#FF1100</color>
+
+    <!-- 绿色 -->
+    <color name="green">#21BC27</color>
+
+    <!-- 灰色 -->
+    <color name="gray_1">#454545</color>
+    <color name="gray_2">#7c7c7d</color>
+    <color name="gray_3">#434343</color>
+    <color name="gray_4">#999999</color>
+    <color name="gray_5">#CCCCCC</color>
+    <color name="gray_6">#C8C8C8</color>
+    <color name="gray_7">#000000</color>
+    <color name="gray_70">#B37E7E7E</color>
+
+    <!-- 黄色、橙色 -->
+    <color name="yellow">#fed24e</color>
+    <color name="orange">#F87420</color>
+
+    <!-- 蓝色 -->
+    <color name="blue_1">#BFD0FF</color>
+    <color name="blue_2">#E4CFFF</color>
+
+    <!-- 紫色 -->
+    <color name="purple">#5D0986</color>
+    <color name="purple_1">#9849BA</color>
 </resources>
